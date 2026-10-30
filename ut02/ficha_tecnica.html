@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ficha técnica de mi ordenador de sobremesa para el inventario del aula: placa, procesador, memoria, disco y sistema operativo."
+    />
+    <title>Ficha técnica de mi ordenador</title>
+  </head>
+  <body>
+    <h1>Ficha técnica de mi ordenador</h1>
+    <p>Datos de mi equipo para el inventario del aula.</p>
+    <p><a href="#componentes">Ir a los componentes</a></p>
+
+    <section>
+      <h2>Cómo he sacado los datos</h2>
+      <ol>
+        <li>Abrí Configuración y fui a Sistema &gt; Acerca de.</li>
+        <li>Abrí PowerShell.</li>
+        <li>
+          Ejecuté <code>Get-CimInstance</code> para el fabricante, el
+          procesador, la gráfica y el sistema.
+        </li>
+        <li>Ejecuté <code>Get-PhysicalDisk</code> para el disco.</li>
+      </ol>
+      <img
+        src="img/mi_pc.png"
+        alt="Captura de Configuración, apartado Acerca de, con las características del equipo"
+        width="547"
+        height="484"
+      />
+    </section>
+
+    <section id="componentes">
+      <h2>Componentes</h2>
+      <ul>
+        <li>Placa base</li>
+        <li>Procesador</li>
+        <li>Memoria RAM</li>
+        <li>Almacenamiento</li>
+        <li>Tarjeta gráfica</li>
+      </ul>
+      <dl>
+        <dt>Fabricante de la placa</dt>
+        <dd class="dato">Micro-Star International (MSI), modelo MS-7D48</dd>
+        <dt>Procesador</dt>
+        <dd class="dato">Intel Core i5-13400 de 13.ª generación</dd>
+        <dt>Memoria RAM</dt>
+        <dd class="dato">16 GB</dd>
+        <dt>Almacenamiento</dt>
+        <dd class="dato">SSD Crucial CT240BX500SSD1 de 240 GB</dd>
+        <dt>Tarjeta gráfica</dt>
+        <dd class="dato">Intel UHD Graphics 730</dd>
+        <dt>Sistema operativo</dt>
+        <dd class="dato">Windows 11 Pro</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Más información</h2>
+      <p>
+        Web del fabricante:
+        <a href="https://www.msi.com" target="_blank" rel="noopener noreferrer"
+          >MSI</a
+        >
+      </p>
+    </section>
+  </body>
+</html>
