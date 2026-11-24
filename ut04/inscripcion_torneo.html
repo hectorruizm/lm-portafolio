@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción al torneo de e-sports</title>
+  <link rel="stylesheet" href="css/cita.css">
+  <script src="js/torneo.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <strong class="marca">Torneo de e-sports · Inscripción</strong>
+  </header>
+
+  <main>
+    <h1>Inscríbete en el torneo</h1>
+
+    <!--
+      Método POST: el formulario lleva datos personales (correo, teléfono,
+      fecha de nacimiento) y no deben quedar en la URL, en el historial ni en
+      los registros del servidor. Además, inscribirse crea un registro nuevo:
+      no es una consulta que se pueda repetir recargando la página.
+    -->
+    <form id="form-torneo" action="https://httpbin.org/post" method="post">
+
+      <!-- Grupo 1: datos del jugador -->
+      <fieldset>
+        <legend>Datos del jugador</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name"
+                 required minlength="3" maxlength="80">
+        </div>
+
+        <div class="campo">
+          <label for="nick">Nick</label>
+          <input type="text" id="nick" name="nick" aria-describedby="ayuda-nick"
+                 required pattern="[A-Za-z0-9_]{3,16}" title="De 3 a 16 letras, números o guion bajo, sin espacios">
+          <small id="ayuda-nick" class="ayuda">De 3 a 16 letras, números o _, sin espacios.</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono móvil</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" aria-describedby="ayuda-telefono"
+                 required pattern="[67][0-9]{8}" title="Móvil de 9 cifras que empiece por 6 o 7">
+          <small id="ayuda-telefono" class="ayuda">9 cifras empezando por 6 o 7.</small>
+        </div>
+
+        <div class="campo">
+          <label for="nacimiento">Fecha de nacimiento</label>
+          <input type="date" id="nacimiento" name="nacimiento" aria-describedby="ayuda-nacimiento"
+                 required min="1920-01-01">
+          <small id="ayuda-nacimiento" class="ayuda">Hay que tener 16 años o más.</small>
+        </div>
+      </fieldset>
+
+      <!-- Grupo 2: el torneo -->
+      <fieldset>
+        <legend>Torneo</legend>
+
+        <div class="campo">
+          <label for="juego">Juego</label>
+          <select id="juego" name="juego" required>
+            <option value="">— Elige un juego —</option>
+            <option value="futbol">Fútbol</option>
+            <option value="coches">Carreras de coches</option>
+            <option value="shooter">Shooter por equipos</option>
+            <option value="estrategia">Estrategia (MOBA)</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="nivel">Nivel en el juego</label>
+          <input type="number" id="nivel" name="nivel" aria-describedby="ayuda-nivel"
+                 required min="1" max="100">
+          <small id="ayuda-nivel" class="ayuda">Del 1 al 100.</small>
+        </div>
+      </fieldset>
+
+      <!-- Grupo 3: plataforma (radio: solo una) -->
+      <fieldset>
+        <legend>Plataforma</legend>
+        <div class="opcion">
+          <input type="radio" id="plat-pc" name="plataforma" value="pc" required>
+          <label for="plat-pc">PC</label>
+        </div>
+        <div class="opcion">
+          <input type="radio" id="plat-consola" name="plataforma" value="consola">
+          <label for="plat-consola">Consola</label>
+        </div>
+        <div class="opcion">
+          <input type="radio" id="plat-movil" name="plataforma" value="movil">
+          <label for="plat-movil">Móvil</label>
+        </div>
+      </fieldset>
+
+      <!-- Grupo 4: equipo -->
+      <fieldset>
+        <legend>Equipo</legend>
+
+        <div class="campo">
+          <label for="equipo">Nombre del equipo</label>
+          <input type="text" id="equipo" name="equipo" required minlength="3" maxlength="30">
+        </div>
+
+        <div class="campo">
+          <label for="tag">Etiqueta del equipo</label>
+          <input type="text" id="tag" name="tag" aria-describedby="ayuda-tag"
+                 required pattern="[A-Z0-9]{2,4}" title="De 2 a 4 letras mayúsculas o números, por ejemplo HR16">
+          <small id="ayuda-tag" class="ayuda">De 2 a 4 mayúsculas o números, por ejemplo HR16.</small>
+        </div>
+
+        <div class="campo">
+          <label for="jugadores">Número de jugadores</label>
+          <input type="number" id="jugadores" name="jugadores" aria-describedby="ayuda-jugadores"
+                 required min="1" max="5">
+          <small id="ayuda-jugadores" class="ayuda">Entre 1 y 5.</small>
+        </div>
+      </fieldset>
+
+      <!-- Grupo 5: extras (checkbox: varios) -->
+      <fieldset>
+        <legend>Extras</legend>
+        <div class="opcion">
+          <input type="checkbox" id="extra-directo" name="extras" value="directo">
+          <label for="extra-directo">Quiero que retransmitan mis partidas en directo</label>
+        </div>
+        <div class="opcion">
+          <input type="checkbox" id="extra-camiseta" name="extras" value="camiseta">
+          <label for="extra-camiseta">Camiseta del torneo (10 €)</label>
+        </div>
+      </fieldset>
+
+      <div class="opcion">
+        <input type="checkbox" id="normas" name="normas" value="aceptadas" required>
+        <label for="normas">He leído y acepto las normas del torneo</label>
+      </div>
+
+      <button type="submit">Inscribirme</button>
+    </form>
+  </main>
+</body>
+</html>

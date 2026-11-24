@@ -141,3 +141,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid {
 input:user-valid, select:user-valid, textarea:user-valid {
   border: 2px solid #2e9e5b;
 }
+
+/* Título de marca en la cabecera (formulario del torneo) */
+.marca {
+  color: var(--naranja);
+  font-size: 1.4rem;
+  padding: 10px 0;
+}
