@@ -1,0 +1,143 @@
+/* ===== Estilos del formulario de cita · BiciRuta ===== */
+
+:root {
+  --naranja: #e8915a;
+  --oscuro: #26323a;
+  --gris: #6b7680;
+  --borde: #c9d1d6;
+  --fondo: #f6f7f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--oscuro);
+  background: var(--fondo);
+  line-height: 1.5;
+}
+
+/* Cabecera */
+.cabecera {
+  background: #fff;
+  border-bottom: 4px solid var(--naranja);
+  padding: 12px 24px;
+}
+.cabecera img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 24px 48px;
+}
+
+h1 { font-size: 1.8rem; }
+
+/* Grupos de campos */
+fieldset {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 0 0 20px;
+}
+legend {
+  font-weight: 700;
+  color: var(--naranja);
+  padding: 0 6px;
+}
+
+/* Un campo: etiqueta arriba, control debajo y ayuda en gris */
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.campo label { font-weight: 600; margin-bottom: 4px; }
+
+input, select, textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--naranja);
+  outline-offset: 1px;
+}
+
+.ayuda {
+  color: var(--gris);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Radios y checkbox: control y texto en la misma línea */
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+.opcion input { width: auto; }
+
+/* Fieldset deshabilitado (cuenta opcional) */
+fieldset:disabled { opacity: 0.5; }
+
+/* Botón */
+button {
+  font: inherit;
+  font-weight: 700;
+  background: var(--naranja);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 12px 28px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+button:hover { background: #d97c43; }
+
+/* En pantallas anchas: etiqueta a la izquierda y control a la derecha */
+@media (min-width: 640px) {
+  .campo {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    column-gap: 16px;
+    align-items: center;
+  }
+  .campo label { margin-bottom: 0; }
+  .campo .ayuda { grid-column: 2; }
+}
+
+/* Buscador de la cabecera */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cabecera img { width: 200px; }
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.buscador label { font-size: 0.9rem; color: var(--gris); }
+.buscador input { width: 180px; }
+.buscador button { margin-top: 0; padding: 8px 16px; }
+
+/* Validación: colores solo después de que el usuario toque el campo */
+input:user-invalid, select:user-invalid, textarea:user-invalid {
+  border: 2px solid #d64545;
+  background: #fff5f5;
+}
+input:user-valid, select:user-valid, textarea:user-valid {
+  border: 2px solid #2e9e5b;
+}
